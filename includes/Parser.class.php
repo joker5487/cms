@@ -92,14 +92,16 @@ class Parser {
         $_patten = '/\{include\s+file=(\"|\')([\w\.\-\/]+)(\"|\')\}/';
 
         // 判断是否存在 include 标签
-        if(preg_match($_patten, $this->_tpl, $_files)){
-            // 判断引用的文件是否存在
-            if( ! file_exists($_files[2]) || empty($_files)) {
-                exit('ERROR: 包含文件出错！');
-            }
+        if(preg_match_all($_patten, $this->_tpl, $_files)){
+            foreach ($_files[2] as $_value) {
+                // 判断引用的文件是否存在
+                if( ! file_exists('templates/' . $_value)) {
+                    exit('ERROR: 包含文件出错！');
+                }
 
-            // 文件检测通过，替换 include 标签
-            $this->_tpl = preg_replace($_patten, "<?php include '$2'; ?>", $this->_tpl);
+                // 文件检测通过，替换 include 标签
+                $this->_tpl = preg_replace($_patten, "<?php \$_tpl->create('$2')?>", $this->_tpl);
+            }
         }
     }
 

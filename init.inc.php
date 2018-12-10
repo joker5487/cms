@@ -14,15 +14,16 @@ define('ROOT_PATH', dirname(__FILE__));
 
 require_once ROOT_PATH . '/config/profile.inc.php';
 
-// 引入模版类文件
-require_once ROOT_PATH . '/includes/init.class.php';
-
-// 引入数据库连接类文件
-require_once ROOT_PATH . '/includes/DB.class.php';
-
-// 引入工具类文件
-require_once ROOT_PATH . '/includes/Tool.class.php';
-
+// 自动加载类
+function __autoload($_className) {
+    if (substr($_className, -6) == 'Action') {
+        require_once ROOT_PATH . '/action/' . $_className . '.class.php';
+    } elseif (substr($_className, -5) == 'Model') {
+        require_once ROOT_PATH . '/model/' . $_className . '.class.php';
+    } else {
+        require_once ROOT_PATH . '/includes/' . $_className . '.class.php';
+    }
+}
 // 引入缓存配置文件
 require_once 'cache.inc.php';
 

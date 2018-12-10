@@ -6,13 +6,21 @@
 
     <link rel="stylesheet" href="../style/admin.css">
 
-    <script type="text/javascript" src="../js/admin_manage_option.js"></script>
+    <script type="text/javascript" src="../js/admin_manage.js"></script>
 </head>
 <body id="main">
 
     <div class="map">
-        管理首页 &gt;&gt; 管理员管理 &gt;&gt; <strong>{$title}</strong>
+        管理首页 &gt;&gt; 管理员管理 &gt;&gt; <strong id="title">{$title}</strong>
     </div>
+
+    <ol>
+        <li><a href="manage.php?action=list" class="selected">管理员列表</a></li>
+        <li><a href="manage.php?action=add">新增管理员</a></li>
+        {if $update}
+            <li><a href="manage.php?action=update"">修改管理员</a></li>
+        {/if}
+    </ol>
 
     {if $list}
         <table cellspacing="0">

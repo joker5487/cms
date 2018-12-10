@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    {include file="header.inc.php"}
+    {include file="header.tpl"}
 
     <div id="user">
         <h2>会员信息</h2>
@@ -251,7 +251,7 @@
         </div>
     </div>
 
-    {include file='footer.inc.php'}
+    {include file='footer.tpl'}
 
 </body>
 </html>

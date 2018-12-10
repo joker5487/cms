@@ -11,8 +11,8 @@
     <h1>LOGO</h1>
 
     <ul>
-        <li><a id="nav1" name="admin_nav" target="sidebar" href="sidebar.php" class="selected" onclick="admin_top_nav(event)">首页</a></li>
-        <li><a id="nav2" name="admin_nav" target="sidebar" href="sidebarn.php" onclick="admin_top_nav(event)">内容</a></li>
+        <li><a id="nav1" name="admin_nav" target="sidebar" href="../templates/sidebar.html" class="selected" onclick="admin_top_nav(event)">首页</a></li>
+        <li><a id="nav2" name="admin_nav" target="sidebar" href="../templates/sidebarn.html" onclick="admin_top_nav(event)">内容</a></li>
         <li><a id="nav3" name="admin_nav" target="sidebar" href="###" onclick="admin_top_nav(event)">会员</a></li>
         <li><a id="nav4" name="admin_nav" target="sidebar" href="###" onclick="admin_top_nav(event)">系统</a></li>
     </ul>

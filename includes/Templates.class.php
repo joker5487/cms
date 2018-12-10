@@ -42,6 +42,8 @@ class Templates {
 
     // 页面渲染方法
     public function display($_file){
+        // 给include进来的tpl传一个模板操作的对象
+        $_tpl = $this;
         // 设置模版路径
         $_tplFile = TPL_DIR . $_file;
 

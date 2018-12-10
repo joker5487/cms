@@ -10,7 +10,7 @@
     <frameset rows="80px, *" border="0">
         <frame src="top.php" noresize="true" scrolling="no"/>
         <frameset cols="150px, *" border="0">
-            <frame src="sidebar.php" name="sidebar" noresize="true" scrolling="no"/>
+            <frame src="../templates/sidebar.html" name="sidebar" noresize="true" scrolling="no"/>
             <frame src="main.php" name="main" noresize="true"/>
         </frameset>
     </frameset>

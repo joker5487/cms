@@ -7,7 +7,6 @@
  */
 
 require_once substr(dirname(__FILE__), 0, -6) . '/init.inc.php';
-require_once ROOT_PATH . '/model/Manage.class.php';
 global $_tpl;
 
-new Manage($_tpl); // 入口
+new ManageAction($_tpl); // 入口
