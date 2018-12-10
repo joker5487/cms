@@ -1,0 +1,149 @@
+body,h1,h2,h3,p,form,ul,li,dl,dt,dd{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: #ffffff;
+    font-size: 12px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+#top{
+    background: url("../images/admin_top_bg.gif");
+}
+#top h1{
+    width: 150px;
+    height: 80px;
+    font-size: 12px;
+    background: url("../images/logosmall.png");
+    text-indent: -9999px;
+    float: left;
+}
+#top ul{
+    float: left;
+    padding: 47px 0 0 10px;
+}
+#top ul li{
+    float: left;
+    padding: 0 0 0 5px;
+}
+#top ul li a{
+    width: 58px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    display: block;
+    background: url("../images/li_bg.png") no-repeat left bottom;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+}
+#top ul li a.selected{
+    background-position: right bottom;
+    color: #3b6ea5;
+}
+#top p{
+    float: right;
+    padding: 32px 20px 0 0;
+    color: #ffffff;
+}
+#top p a{
+    color: #ffffff;
+    text-decoration: none;
+}
+#top p a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#sidebar{
+    background: #f7fbfc url("../images/sidebar_right.png") repeat-y right;
+}
+#sidebar dl{
+    padding: 20px;
+    text-indent: 2px;
+}
+#sidebar dl dt{
+    font-size: 14px;
+    color: #3b6ea5;
+    font-weight: bold;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px 0;
+    margin: 5px 0;
+}
+#sidebar dl dd{
+    height: 22px;
+    line-height: 22px;
+}
+#sidebar dl dd a{
+    color: #333333;
+    text-decoration: none;
+}
+#sidebar dl dd a:hover{
+    text-decoration: underline;
+}
+
+#main div.map{
+    padding: 15px;
+}
+#main div.map strong{
+    color: green;
+}
+#main table{
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+#main table.left{
+    text-align: left;
+}
+#main table tr{
+    background: #ffffff;
+}
+#main table tr:hover{
+    background: #ffffcc;
+}
+#main table th, #main table td{
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+}
+#main table th{
+    background: #eef3f7;
+    border: 1px solid #d5dfe8;
+    font-weight: normal;
+}
+#main table td{
+    border-bottom: 1px solid #eeeeee;
+}
+#main a{
+    color: #3b6ea5;
+    text-decoration: none;
+}
+#main a:hover{
+    text-decoration: underline;
+}
+#main p.center{
+    text-align: center;
+    padding: 20px;
+}
+#main form input.text{
+    width: 220px;
+    height: 19px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+}
+#main form select{
+    width: 100px;
+    height: 19px;
+    background: #ffffff;
+}
+#main form input.submit{
+    cursor: pointer;
+    margin: 0 0 0 47px;
+}
