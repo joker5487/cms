@@ -27,17 +27,30 @@ class ManageModel extends Model
         return $this->$_key;
     }
 
+    // 查询所有等级
+    public function getAllLevel() {
+        $_sql = "
+            SELECT
+                id,
+                level_name,
+                level_info
+            FROM cms_level
+            ORDER BY id ASC
+        ";
+
+        return parent::all($_sql);
+    }
+
     // 查询单个管理员
     public function getOneManage() {
         $_sql = "
             SELECT
                 id,
                 admin_user,
+                admin_pass,
                 level
-            FROM
-                cms_manage
-            WHERE
-                id = '$this->id'
+            FROM cms_manage
+            WHERE id = '$this->id' OR admin_user = '$this->admin_user' OR level = '$this->level'
             LIMIT 1
         ";
 
@@ -45,19 +58,18 @@ class ManageModel extends Model
     }
 
     // 查询所有管理员
-    public function getManage() {
+    public function getAllManage() {
         // 设置查询逻辑
         $_sql = "
           SELECT
             m.id,
             m.admin_user,
-            m.level,
             m.login_count,
             m.last_ip,
             m.last_time,
             l.level_name
           FROM cms_manage m
-          LEFT JOIN cms_level l ON m.level = l.level
+          LEFT JOIN cms_level l ON m.level = l.id
           ORDER BY m.id ASC
         ";
 
