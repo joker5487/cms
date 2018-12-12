@@ -28,6 +28,21 @@ class ManageModel extends Model
         return $this->$_key;
     }
 
+    // 查询登录管理员
+    public function getLoginManage() {
+        $_sql = "
+            SELECT
+                m.admin_user,
+                l.level_name
+            FROM cms_manage m
+            LEFT JOIN cms_level l ON m.level = l.id
+            WHERE admin_user = '$this->admin_user' AND admin_pass = '$this->admin_pass'
+            LIMIT 1
+        ";
+
+        return parent::one($_sql);
+    }
+
     // 获取管理员总记录
     public function getManageTotal() {
         $_sql = "

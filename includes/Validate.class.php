@@ -27,6 +27,11 @@ class Validate {
                 return true;
             }
             return false;
+        } elseif ($_flag == 'equals') {
+            if (mb_strlen(trim($_data), 'utf-8') != $_length) {
+                return true;
+            }
+            return false;
         } else {
             Tool::alertBack('ERROR：参数传递错误，必须是 min 或 max');
         }

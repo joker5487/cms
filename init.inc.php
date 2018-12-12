@@ -6,6 +6,9 @@
  * Time: 下午4:46
  */
 
+// 开启session
+session_start();
+
 // 设置编码
 header('Content-Type:text/html;charset=utf-8');
 

@@ -175,6 +175,44 @@ ul,ol{
     color: #ffffff;
 }
 
+#adminLogin{
+    width: 350px;
+    margin: 100px auto;
+    color: #666666;
+    font-size: 14px;
+}
+#adminLogin fieldset{
+    padding: 20px;
+}
+#adminLogin legend{
+    font-size: 16px;
+    font-weight: bold;
+}
+#adminLogin label{
+    display: block;
+    margin: 5px;
+
+}
+#adminLogin label input.text{
+    width: 220px;
+    height: 27px;
+    border: 1px solid #666666;
+    background: #eeeeee;
+}
+#adminLogin label.t{
+    color: #999999;
+    text-indent: 56px;
+}
+#adminLogin label img{
+    margin: 0 0 0 56px;
+    cursor: pointer;
+}
+#adminLogin input.submit{
+    margin: 0 0 0 60px;
+    cursor: pointer;
+}
+
+
 #page{
     text-align: center;
     padding: 10px;
