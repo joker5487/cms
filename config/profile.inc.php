@@ -19,3 +19,4 @@ define('CACHE', ROOT_PATH . '/cache/');                     // 缓存文件目�
 
 // 系统配置信息
 define('PAGE_SIZE', 10);                                    // 分页：每页显示记录数
+define('GPC', get_magic_quotes_gpc());                      // mysql 是否开启自动转义，1 开启， 0 未开启

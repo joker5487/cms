@@ -24,7 +24,7 @@ class Model {
         $_object = $_result->fetch_object();
         DB::unDB($_result, $_db);
 
-        return $_object;
+        return Tool::htmlString($_object);
     }
 
     // 查找多个数据模型
@@ -37,7 +37,7 @@ class Model {
         }
         DB::unDB($_result, $_db);
 
-        return $_list;
+        return Tool::htmlString($_list);
 
     }
 

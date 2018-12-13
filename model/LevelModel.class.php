@@ -17,7 +17,7 @@ class LevelModel extends Model
     // 拦截器（__set）
     public function __set($_key, $_value)
     {
-        $this->$_key = $_value;
+        $this->$_key = Tool::mysqlString($_value);
     }
 
     // 拦截器（__get）

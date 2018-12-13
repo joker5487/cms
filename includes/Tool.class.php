@@ -31,4 +31,26 @@ class Tool {
             session_destroy();
         }
     }
+
+    // 显示 html 过滤
+    static public function htmlString($_data) {
+        if (is_array($_data)) {
+            foreach ($_data as $_key => $_value) {
+                $_string[$_key] = Tool::htmlString($_value);
+            }
+        } elseif (is_object($_data)) {
+            $_string = new stdClass();
+            foreach ($_data as $_key => $_value) {
+                $_string->$_key = Tool::htmlString($_value);
+            }
+        } else {
+            $_string = htmlspecialchars($_data);
+        }
+        return $_string;
+    }
+
+    // 数据库输入过滤
+    static public function mysqlString($_data) {
+        return !GPC ? addslashes($_data) : $_data;
+    }
 }
