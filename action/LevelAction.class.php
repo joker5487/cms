@@ -9,6 +9,7 @@ class LevelAction extends Action {
 
     // 构造方法，初始化
     public function __construct(&$_tpl) {
+        Validate::checkSession();
         parent::__construct($_tpl, new LevelModel());
 
         $this->_tpl->assign('show', false);

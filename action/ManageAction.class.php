@@ -23,6 +23,8 @@ class ManageAction extends Action {
     // 业务逻辑控制器
     private function _action(){
         $action = $_GET['action'];
+        if ($action == 'login') $this->login();
+        Validate::checkSession();
         switch(strtolower($action)){
             case 'show':
                 $this->show();
@@ -35,9 +37,6 @@ class ManageAction extends Action {
                 break;
             case 'delete':
                 $this->delete();
-                break;
-            case 'login':
-                $this->login();
                 break;
             case 'logout':
                 $this->logout();

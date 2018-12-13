@@ -45,4 +45,9 @@ class Validate {
         }
         return false;
     }
+
+    // 检查session是否存在
+    static public function checkSession() {
+        if (!isset($_SESSION['admin'])) Tool::alertBack('警告：非法登录！');
+    }
 }
