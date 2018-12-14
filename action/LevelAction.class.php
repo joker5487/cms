@@ -46,9 +46,13 @@ class LevelAction extends Action {
 
     // show
     private function show(){
+        $_page = new Page($this->_model->getLevelTotal(), PAGE_SIZE);
+        $this->_model->limit = $_page->limit;
+
         $this->_tpl->assign('show', true);
         $this->_tpl->assign('title', '等级列表');
         $this->_tpl->assign('AllLevel', $this->_model->getAllLevel());
+        $this->_tpl->assign('page', $_page->showPage());
     }
 
     // add

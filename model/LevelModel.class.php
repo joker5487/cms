@@ -7,12 +7,13 @@
  * Time: 下午5:01
  */
 
-// 管理员实体类
+// 等级实体类
 class LevelModel extends Model
 {
     private $id;
     private $level_name;
     private $level_info;
+    private $limit;
 
     // 拦截器（__set）
     public function __set($_key, $_value)
@@ -24,6 +25,16 @@ class LevelModel extends Model
     public function __get($_key)
     {
         return $this->$_key;
+    }
+
+    // 获取管理员总记录
+    public function getLevelTotal() {
+        $_sql = "
+            SELECT count(id)
+            FROM cms_level
+        ";
+
+        return parent::total($_sql);
     }
 
     // 查询单个
@@ -51,12 +62,13 @@ class LevelModel extends Model
                 level_info
             FROM cms_level
             ORDER BY id ASC
+            $this->limit
         ";
 
         return parent::all($_sql);
     }
 
-    // 新增
+    // 新增等级
     public function addLevel() {
         $_sql = "INSERT INTO
                             cms_level (
@@ -70,7 +82,7 @@ class LevelModel extends Model
         return parent::aud($_sql);
     }
 
-    // 修改管理员
+    // 修改等级
     public function updateLevel() {
         $_sql = "
             UPDATE cms_level
@@ -84,7 +96,7 @@ class LevelModel extends Model
         return parent::aud($_sql);
     }
 
-    // 删除管理员
+    // 删除等级
     public function deleteLevel() {
         $_sql = "DELETE FROM cms_level WHERE id = '$this->id' LIMIT 1";
 

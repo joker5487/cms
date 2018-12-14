@@ -31,15 +31,21 @@
                 <th>操作</th>
             </tr>
 
-            {foreach $AllLevel(key, value)}
-                <tr>
-                    <td>{@value->id}</td>
-                    <td>{@value->level_name}</td>
-                    <td>{@value->level_info}</td>
-                    <td><a href="level.php?action=update&id={@value->id}">修改</a> | <a href="level.php?action=delete&id={@value->id}" onclick="return confirm('您确定要删除该等级吗？') ? true : false">删除</a></td>
-                </tr>
-            {/foreach}
+            {if $AllLevel}
+                {foreach $AllLevel(key, value)}
+                    <tr>
+                        <td>{@value->id}</td>
+                        <td>{@value->level_name}</td>
+                        <td>{@value->level_info}</td>
+                        <td><a href="level.php?action=update&id={@value->id}">修改</a> | <a href="level.php?action=delete&id={@value->id}" onclick="return confirm('您确定要删除该等级吗？') ? true : false">删除</a></td>
+                    </tr>
+                {/foreach}
+            {else}
+                <tr><td colspan="4">对不起，没有任何数据</td></tr>
+            {/if}
         </table>
+
+        <div id="page">{$page}</div>
     {/if}
 
     {if $add}

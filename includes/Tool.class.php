@@ -34,6 +34,9 @@ class Tool {
 
     // 显示 html 过滤
     static public function htmlString($_data) {
+        if (! $_data) {
+            return '';
+        }
         if (is_array($_data)) {
             foreach ($_data as $_key => $_value) {
                 $_string[$_key] = Tool::htmlString($_value);
