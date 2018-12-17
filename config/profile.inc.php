@@ -18,5 +18,6 @@ define('TPL_C_DIR', ROOT_PATH . '/templates_c/');           // 编译文件目�
 define('CACHE', ROOT_PATH . '/cache/');                     // 缓存文件目录
 
 // 系统配置信息
-define('PAGE_SIZE', 5);                                    // 分页：每页显示记录数
+define('PAGE_SIZE', 2);                                     // 分页：每页显示记录数
 define('GPC', get_magic_quotes_gpc());                      // mysql 是否开启自动转义，1 开启， 0 未开启
+define('NAV_SIZE', 10);                                     // 前台主导航显示个数

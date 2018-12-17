@@ -27,8 +27,9 @@ function __autoload($_className) {
         require_once ROOT_PATH . '/includes/' . $_className . '.class.php';
     }
 }
-// 引入缓存配置文件
-require_once 'cache.inc.php';
 
 // 实例化模版类
 $_tpl = new Templates();
+
+// 引入初始化配置文件
+require_once 'common.inc.php';

@@ -19,9 +19,17 @@ class Page {
     public function __construct($_total, $_pageSize) {
         $this->total = $_total;
         $this->pageSize = $_pageSize;
-        $this->pageNum = ceil($this->total / $this->pageSize);
+
+        $_pageNum = ceil($this->total / $this->pageSize);
+        $_pageNum = $_pageNum < 1 ? 1 : $_pageNum;
+        $this->pageNum = $_pageNum;
+
         $this->page = $this->setPage();
-        $this->offset = ($this->page - 1) * $this->pageSize;
+
+        $_offset = ($this->page - 1) * $this->pageSize;
+        $_offset = $_offset < 0 ? 0 : $_offset;
+        $this->offset = $_offset;
+
         $this->limit = ' LIMIT ' . $this->offset . ', ' . $this->pageSize;
         $this->url = $this->setUrl();
         $this->bothNum = 2;

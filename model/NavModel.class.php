@@ -29,17 +29,29 @@ class NavModel extends Model
         return $this->$_key;
     }
 
-    // 获取导航总记录
+    // 获取主导航总记录
     public function getNavTotal() {
         $_sql = "
             SELECT count(id)
             FROM cms_nav
+            WHERE pid = 0
         ";
 
         return parent::total($_sql);
     }
 
-    // 查询所有
+    // 获取子导航总记录
+    public function getNavChildTotal() {
+        $_sql = "
+            SELECT count(id)
+            FROM cms_nav
+            WHERE pid = '$this->id'
+        ";
+
+        return parent::total($_sql);
+    }
+
+    // 查询所有主导航
     public function getAllNav() {
         // 设置查询逻辑
         $_sql = "
@@ -50,6 +62,24 @@ class NavModel extends Model
                 pid,
                 sort
             FROM cms_nav
+            WHERE pid = 0
+          $this->limit
+        ";
+
+        return parent::all($_sql);
+    }
+
+    // 查询所有子导航
+    public function getAllChildNav() {
+        $_sql = "
+          SELECT
+                id,
+                nav_name,
+                nav_info,
+                pid,
+                sort
+            FROM cms_nav
+            WHERE pid = '$this->id'
           $this->limit
         ";
 
@@ -67,7 +97,7 @@ class NavModel extends Model
                             ) VALUES (
                                 '$this->nav_name',
                                 '$this->nav_info',
-                                0,
+                                '$this->pid',
                                 " . parent::nextId('cms_nav') . "
                             )";
 
@@ -110,5 +140,17 @@ class NavModel extends Model
         ";
 
         return parent::aud($_sql);
+    }
+
+
+    /* ================================================== 分割线：前台页面使用 ================================================== */
+    public function getFrontNav() {
+        $_sql = "
+            SELECT id, nav_name
+            FROM cms_nav
+            WHERE pid = 0
+            LIMIT 0, " . NAV_SIZE;
+
+        return parent::all($_sql);
     }
 }

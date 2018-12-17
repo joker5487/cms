@@ -7,6 +7,10 @@
  */
 
 require_once substr(dirname(__FILE__), 0, -6) . '/init.inc.php';
+Validate::checkSession();
 global $_tpl;
 
-new LevelAction($_tpl); // 入口
+$_level = new LevelAction($_tpl); // 入口
+
+$_level->_action();
+$_tpl->display('level.tpl');

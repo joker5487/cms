@@ -11,3 +11,8 @@ define('IS_CACHE', FALSE);
 
 // 开启缓冲区
 IS_CACHE ? ob_start() : NULL;
+
+// 模版句柄
+global $_tpl;
+$_nav = new NavAction($_tpl);
+$_nav->showfront(); // 列出主导航

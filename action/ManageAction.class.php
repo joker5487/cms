@@ -15,16 +15,11 @@ class ManageAction extends Action {
         $this->_tpl->assign('add', false);
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('delete', false);
-
-        $this->_action();
-        $this->_tpl->display('manage.tpl');
     }
 
     // 业务逻辑控制器
-    private function _action(){
+    public function _action(){
         $action = $_GET['action'];
-        if ($action == 'login') $this->login();
-        Validate::checkSession();
         switch(strtolower($action)){
             case 'show':
                 $this->show();
@@ -38,43 +33,10 @@ class ManageAction extends Action {
             case 'delete':
                 $this->delete();
                 break;
-            case 'logout':
-                $this->logout();
-                break;
             default:
                 Tool::alertBack('非法操作！');
                 break;
         }
-    }
-
-    // login
-    private function login() {
-        if (isset($_POST['send'])) {
-            if(Validate::checkNull($_POST['admin_user'])) Tool::alertBack('警告：用户名不能为空！');
-            if(Validate::checkLength($_POST['admin_user'], 2, 'min')) Tool::alertBack('警告：用户名不能小于2位！');
-            if(Validate::checkLength($_POST['admin_user'], 20, 'max')) Tool::alertBack('警告：用户名不能大于20位！');
-            if(Validate::checkNull($_POST['admin_pass'])) Tool::alertBack('警告：密码不能为空！');
-            if(Validate::checkLength($_POST['admin_pass'], 6, 'min')) Tool::alertBack('警告：密码不能小于6位！');
-            if(Validate::checkLength($_POST['code'], 4, 'equals')) Tool::alertBack('警告：验证码必须是4位！');
-            if(Validate::checkEquals(strtolower($_POST['code']), $_SESSION['code'])) Tool::alertBack('警告：验证码不正确！');
-
-            $this->_model->admin_user = $_POST['admin_user'];
-            $this->_model->admin_pass = sha1($_POST['admin_pass']);
-            $_login = $this->_model->getLoginManage();
-            if($_login) {
-                $_SESSION['admin']['admin_user'] = $_login->admin_user;
-                $_SESSION['admin']['level_name'] = $_login->level_name;
-                Tool::alertLocation(null, 'admin.php');
-            } else {
-                Tool::alertBack('警告：用户名或密码错误！');
-            }
-        }
-    }
-
-    // logout
-    private function logout() {
-        Tool::unSession();
-        Tool::alertLocation(null, 'admin_login.php');
     }
 
     // show

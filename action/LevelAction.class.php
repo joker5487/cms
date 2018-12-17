@@ -9,20 +9,16 @@ class LevelAction extends Action {
 
     // 构造方法，初始化
     public function __construct(&$_tpl) {
-        Validate::checkSession();
         parent::__construct($_tpl, new LevelModel());
 
         $this->_tpl->assign('show', false);
         $this->_tpl->assign('add', false);
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('delete', false);
-
-        $this->_action();
-        $this->_tpl->display('level.tpl');
     }
 
     // 业务逻辑控制器
-    private function _action(){
+    public function _action(){
         $action = $_GET['action'];
         switch(strtolower($action)){
             case 'show':
