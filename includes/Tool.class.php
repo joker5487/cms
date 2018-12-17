@@ -54,6 +54,13 @@ class Tool {
 
     // 数据库输入过滤
     static public function mysqlString($_data) {
-        return !GPC ? addslashes($_data) : $_data;
+        if (is_array($_data) && !GPC) {
+            foreach ($_data as $_key => $_value) {
+                $_data[$_key] = addslashes($_value);
+            }
+        } else {
+            $_data = !GPC ? addslashes($_data) : $_data;
+        }
+        return $_data;
     }
 }

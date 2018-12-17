@@ -17,19 +17,11 @@ class Page {
 
     // 构造函数初始化
     public function __construct($_total, $_pageSize) {
-        $this->total = $_total;
+        $this->total = $_total ? $_total : 1;
         $this->pageSize = $_pageSize;
-
-        $_pageNum = ceil($this->total / $this->pageSize);
-        $_pageNum = $_pageNum < 1 ? 1 : $_pageNum;
-        $this->pageNum = $_pageNum;
-
+        $this->pageNum = ceil($this->total / $this->pageSize);
         $this->page = $this->setPage();
-
-        $_offset = ($this->page - 1) * $this->pageSize;
-        $_offset = $_offset < 0 ? 0 : $_offset;
-        $this->offset = $_offset;
-
+        $this->offset = ($this->page - 1) * $this->pageSize;
         $this->limit = ' LIMIT ' . $this->offset . ', ' . $this->pageSize;
         $this->url = $this->setUrl();
         $this->bothNum = 2;

@@ -155,6 +155,10 @@ ul,ol{
     cursor: pointer;
     margin: 0 0 0 60px;
 }
+#main form input.sort{
+    width: 35px;
+    text-align: center;
+}
 #main ol{
     padding: 0 0 0 47px;
     height: 35px;

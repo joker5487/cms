@@ -58,4 +58,13 @@ class Model {
 
         return $_affected_rows;
     }
+
+    // 执行多条SQL语句的模型
+    protected function mulit($_sql) {
+        $_db = DB::getDB();
+        $_db->multi_query($_sql);
+        DB::unDB($_result, $_db);
+
+        return true;
+    }
 }

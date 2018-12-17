@@ -41,6 +41,9 @@ class NavAction extends Action {
             case 'showchild':
                 $this->showchild();
                 break;
+            case 'sort':
+                $this->sort();
+                break;
             default:
                 Tool::alertBack('非法操作！');
                 break;
@@ -153,6 +156,15 @@ class NavAction extends Action {
             $this->_tpl->assign('prev_name', $_nav_info->nav_name);
 
             $this->_tpl->assign('page', $_page->showPage());
+        }
+    }
+
+    // sort
+    private function sort() {
+        if (isset($_POST['send'])) {
+            $this->_model->sort = $_POST['sort'];
+            $this->_model->setNavSort();
+            Tool::alertLocation(null, 'nav.php?action=show');
         }
     }
 

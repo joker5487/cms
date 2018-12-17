@@ -63,6 +63,7 @@ class NavModel extends Model
                 sort
             FROM cms_nav
             WHERE pid = 0
+            ORDER BY sort ASC
           $this->limit
         ";
 
@@ -80,6 +81,7 @@ class NavModel extends Model
                 sort
             FROM cms_nav
             WHERE pid = '$this->id'
+            ORDER BY sort ASC
           $this->limit
         ";
 
@@ -142,6 +144,16 @@ class NavModel extends Model
         return parent::aud($_sql);
     }
 
+    // 导航排序
+    public function setNavSort() {
+        $_sql = '';
+        foreach ($this->sort as $key => $value) {
+            $_sql .= "UPDATE cms_nav SET sort = '$value' WHERE id = '$key';";
+        }
+
+        return parent::mulit($_sql);
+    }
+
 
     /* ================================================== 分割线：前台页面使用 ================================================== */
     public function getFrontNav() {
@@ -149,6 +161,7 @@ class NavModel extends Model
             SELECT id, nav_name
             FROM cms_nav
             WHERE pid = 0
+            ORDER BY sort ASC
             LIMIT 0, " . NAV_SIZE;
 
         return parent::all($_sql);
