@@ -166,4 +166,21 @@ class NavModel extends Model
 
         return parent::all($_sql);
     }
+
+    // 查询所有子导航(前台)
+    public function getAllChildFrontNav() {
+        $_sql = "
+          SELECT
+                id,
+                nav_name,
+                nav_info,
+                pid,
+                sort
+            FROM cms_nav
+            WHERE pid = '$this->id'
+            ORDER BY sort ASC
+        ";
+
+        return parent::all($_sql);
+    }
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CMS 内容管理系统 0.1</title>
 
+    <link rel="stylesheet" href="style/basic.css">
     <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
