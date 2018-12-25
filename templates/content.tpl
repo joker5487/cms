@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style/admin.css">
 
     <script type="text/javascript" src="../js/admin_level.js"></script>
+    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body id="main">
 
@@ -51,7 +52,11 @@
             <tr><td><label for="">文章来源：</label><input type="text" name="source" class="text"></td></tr>
             <tr><td><label for="">作者：</label><input type="text" name="author" class="text"></td></tr>
             <tr><td class="textarea"><label for="">内容摘要：</label><textarea name="info" id="" cols="30" rows="10"></textarea></td></tr>
-            <tr><td><label for="">详细内容：</label>占位：这里以后会使用在线编辑器</td></tr>
+            <tr class="ckeditor">
+                <td class="textarea">
+                    <textarea name="ckeditor" class="ckeditor"></textarea>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <label for="">评论选项：</label>

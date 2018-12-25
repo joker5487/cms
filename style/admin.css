@@ -96,14 +96,32 @@ ul,ol{
 }
 #main table{
     width: 95%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+}
+#main table table{
+    width: 100%;
+    float: left;
+}
+#main table.cke_dialog{
+    width: auto;
 }
 #main table.left{
     text-align: left;
 }
 #main table tr{
     background: #ffffff;
+}
+#main table tr.ckeditor td.textarea{
+    width: 65%;
+    margin: 0 0 0 105px;
+}
+#main table tr.ckeditor:hover, #main table.cke_dialog tr:hover{
+    background: #ffffff;
+}
+#main table.cke_dialog_footer_buttons tr td.cke_dialog_ui_hbox_first{
+    float: right;
 }
 #main table tr:hover{
     background: #ffffcc;
@@ -198,7 +216,7 @@ ul,ol{
     background: #3b6ea5;
     color: #ffffff;
 }
-#main label{
+#main label:not(.cke_dialog_ui_labeled_label){
     display: inline-block;
     width: 100px;
     float: left;

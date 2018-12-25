@@ -1,0 +1,18 @@
+#main table table{
+    width: 100%;
+    float: left;
+}
+
+
+#main table.content tr.ckeditor:hover{
+    background: none;
+}
+#main table.content tr.ckeditor td{
+    width: 70%;
+    height: auto;
+    line-height: normal;
+    margin-left: 105px;
+}
+#main table.cke_dialog tr{
+    background: none;
+}
