@@ -123,6 +123,10 @@ ul,ol{
 #main table.cke_dialog_footer_buttons tr td.cke_dialog_ui_hbox_first{
     float: right;
 }
+#main table.cke_dialog tr td a.cke_dialog_ui_button{
+    float: right;
+    margin-right: 10px;
+}
 #main table tr:hover{
     background: #ffffcc;
 }
