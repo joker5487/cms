@@ -52,6 +52,10 @@ class Templates {
             exit('模版文件不存在！');
         }
 
+        if ( ! empty($_SERVER['QUERY_STRING'])) {
+            $_file .= '&' . $_SERVER['QUERY_STRING'];
+        }
+
         // 生成编译文件
         $_parFile = TPL_C_DIR . md5($_file) . $_file . '.php';
 

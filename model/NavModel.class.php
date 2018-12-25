@@ -110,13 +110,17 @@ class NavModel extends Model
     public function getOneNav() {
         $_sql = "
             SELECT
-                id,
-                nav_name,
-                nav_info,
-                pid,
-                sort
-            FROM cms_nav
-            WHERE id = '$this->id' OR nav_name = '$this->nav_name'
+                n1.id,
+                n1.nav_name,
+                n1.nav_info,
+                n1.pid,
+                n1.sort,
+                n2.id as p_id,
+                n2.nav_name as p_nav_name
+            FROM cms_nav n1
+            LEFT JOIN cms_nav n2
+            ON n1.pid = n2.id
+            WHERE n1.id = '$this->id' OR n1.nav_name = '$this->nav_name'
             LIMIT 1
         ";
 
