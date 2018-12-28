@@ -15,6 +15,9 @@ header('Content-Type:text/html;charset=utf-8');
 // 网站根目录
 define('ROOT_PATH', dirname(__FILE__));
 
+// 设置中国时区
+date_default_timezone_set('Asia/Shanghai');
+
 require_once ROOT_PATH . '/config/profile.inc.php';
 
 // 自动加载类

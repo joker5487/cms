@@ -16,6 +16,7 @@ define('DB_NAME', 'cms');                                   // 数据库名称
 define('TPL_DIR', ROOT_PATH . '/templates/');               // 模版文件目录
 define('TPL_C_DIR', ROOT_PATH . '/templates_c/');           // 编译文件目录
 define('CACHE', ROOT_PATH . '/cache/');                     // 缓存文件目录
+define('UPDIR', '/uploads/');                               // 上传文件目录
 
 // 系统配置信息
 define('PAGE_SIZE', 10);                                    // 分页：每页显示记录数

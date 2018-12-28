@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="../style/admin.css">
 
-    <script type="text/javascript" src="../js/admin_level.js"></script>
+    <script type="text/javascript" src="../js/admin_content.js"></script>
     <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body id="main">
@@ -24,7 +24,7 @@
 </ol>
 
 {if $add}
-    <form action="">
+    <form name="content" action="">
         <table cellspacing="0" class="content">
             <tr><th><strong>发布一条新文档</strong></th></tr>
             <tr><td><label for="">文档标题：</label><input type="text" name="title" class="text"></td></tr>
@@ -48,7 +48,12 @@
             </tr>
             <tr><td><label for="">标签：</label><input type="text" name="tag" class="text"></td></tr>
             <tr><td><label for="">关键字：</label><input type="text" name="keyword" class="text"></td></tr>
-            <tr><td><label for="">缩略图：</label><input type="text" name="thumbnail" class="text"></td></tr>
+            <tr>
+                <td>
+                    <label for="">缩略图：</label><input type="text" name="thumbnail" class="text" disabled="disabled"> <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html', 'upfile', 400, 100);">
+                    <img src="" alt="" name="pic" style="display: none;">
+                </td>
+            </tr>
             <tr><td><label for="">文章来源：</label><input type="text" name="source" class="text"></td></tr>
             <tr><td><label for="">作者：</label><input type="text" name="author" class="text"></td></tr>
             <tr><td class="textarea"><label for="">内容摘要：</label><textarea name="info" id="" cols="30" rows="10"></textarea></td></tr>

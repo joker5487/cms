@@ -25,6 +25,16 @@ class Tool {
         exit();
     }
 
+    // 弹窗、赋值、关闭(仅图片上传使用)
+    static public function alertOpenerClose($_info, $_path) {
+        echo "<script type='text/javascript'>alert('$_info');</script>";
+        echo "<script type='text/javascript'>opener.document.content.thumbnail.value='$_path';</script>";
+        echo "<script type='text/javascript'>opener.document.content.pic.style.display='block';</script>";
+        echo "<script type='text/javascript'>opener.document.content.pic.src='$_path';</script>";
+        echo "<script type='text/javascript'>window.close();</script>";
+        exit();
+    }
+
     // 清理session
     static public function unSession() {
         if (session_start()) {

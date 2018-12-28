@@ -120,9 +120,7 @@ ul,ol{
 #main table tr.ckeditor:hover, #main table.cke_dialog tr:hover{
     background: #ffffff;
 }
-#main table.cke_dialog_footer_buttons tr td.cke_dialog_ui_hbox_first{
-    float: right;
-}
+
 #main table.cke_dialog tr td a.cke_dialog_ui_button{
     float: right;
     margin-right: 10px;
@@ -142,6 +140,9 @@ ul,ol{
 }
 #main table td{
     border-bottom: 1px solid #eeeeee;
+}
+#main table.cke_dialog tr td{
+    border-bottom: none;
 }
 #main table.content td{
     float: left;
