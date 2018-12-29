@@ -232,6 +232,10 @@ ul,ol{
     line-height: 25px;
     font-weight: bold;
 }
+#main table.cke_dialog_footer_buttons tr td.cke_dialog_ui_hbox_first,
+#main table.cke_dialog_footer_buttons tr td.cke_dialog_ui_hbox_last{
+    float: right;
+}
 
 #adminLogin{
     width: 350px;

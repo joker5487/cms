@@ -6,8 +6,8 @@
 
     <link rel="stylesheet" href="../style/admin.css">
 
+    <script type="text/javascript" src="../ckeditor4_8/ckeditor.js"></script>
     <script type="text/javascript" src="../js/admin_content.js"></script>
-    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body id="main">
 

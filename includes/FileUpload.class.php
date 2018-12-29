@@ -32,9 +32,9 @@ class FileUpload {
 
         $this->checkError();
         $this->checkType();
-//        $this->checkPath();
+        $this->checkPath();
         $this->setNewName();
-//        $this->moveUpload();
+        $this->moveUpload();
     }
 
     // 返回链接路径
