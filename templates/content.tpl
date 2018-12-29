@@ -49,7 +49,7 @@
             <tr><td><label for="">标签：</label><input type="text" name="tag" class="text"></td></tr>
             <tr><td><label for="">关键字：</label><input type="text" name="keyword" class="text"></td></tr>
             <tr>
-                <td>
+                <td class="thumbnail">
                     <label for="">缩略图：</label><input type="text" name="thumbnail" class="text" disabled="disabled"> <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html', 'upfile', 400, 100);">
                     <img src="" alt="" name="pic" style="display: none;">
                 </td>

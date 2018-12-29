@@ -16,6 +16,9 @@ if (isset($_GET['type'])) {
     $_ckefn = $_GET['CKEditorFuncNum'];
     $_path = $_fileUpload->getPath();
 
+    $_img = new Image($_path);
+    $_img->ckeImg();
+
     echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($_ckefn, \"$_path\", '图片上传成功！')</script>";
 } else {
     Tool::alertBack('警告：因为非法操作导致上传失败！');
