@@ -28,9 +28,10 @@ class Image {
 
     // cke专用图像处理
     public function ckeImg($new_width = 0, $new_height = 0) {
-        list($_water_width, $_water_height, $_water_type) = getimagesize(MARK);
-        $_water = $this->getFromImg(MARK, $_water_type);
-
+        $_markPath = '..' . MARK;
+        list($_water_width, $_water_height, $_water_type) = getimagesize($_markPath);
+        $_water = $this->getFromImg($_markPath, $_water_type);
+        
         // check
         if (empty($new_width) && empty($new_height)) {
             $new_width = $this->width;

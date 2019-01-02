@@ -18,6 +18,7 @@ define('TPL_C_DIR', ROOT_PATH . '/templates_c/');           // 编译文件目�
 define('CACHE', ROOT_PATH . '/cache/');                     // 缓存文件目录
 define('UPDIR', '/uploads/');                               // 上传文件目录
 define('MARK', '/images/yc.png');                           // 水印图片地址
+define('MAX_FILE_SIZE', 204800);                            // 图片上传允许的最大值（KB）
 
 // 系统配置信息
 define('PAGE_SIZE', 10);                                    // 分页：每页显示记录数
