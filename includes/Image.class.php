@@ -28,10 +28,6 @@ class Image {
 
     // cke专用图像处理
     public function ckeImg($new_width = 0, $new_height = 0) {
-        $_markPath = '..' . MARK;
-        list($_water_width, $_water_height, $_water_type) = getimagesize($_markPath);
-        $_water = $this->getFromImg($_markPath, $_water_type);
-        
         // check
         if (empty($new_width) && empty($new_height)) {
             $new_width = $this->width;
@@ -54,10 +50,6 @@ class Image {
             $new_height = $this->height;
         }
 
-        $_padding = 5;
-        $_water_x = $new_width - $_water_width - $_padding;
-        $_water_y = $new_height - $_water_height - $_padding;
-
         // 新图背景资源句柄
         $this->new = imagecreatetruecolor($new_width, $new_height);
 
@@ -67,10 +59,9 @@ class Image {
         // copy 原图到新图背景中
         imagecopyresampled($this->new, $this->img, 0, 0, 0, 0, $new_width, $new_height, $this->width, $this->height);
 
-        imagecopy($this->new, $_water, $_water_x, $_water_y, 0, 0, $_water_width, $_water_height);
-        imagepng($this->new, $this->file);
-        imagedestroy($this->img);
-        imagedestroy($_water);
+        // 设置图片水印
+        $_markPath = '..' . MARK;
+        $this->setWaterMark($_markPath, $new_width, $new_height);
     }
 
     // 缩略图（固定容器的长和高、图像等比例、扩容、填充、裁剪）
@@ -105,17 +96,17 @@ class Image {
             $r = $_n_w / $new_width; // 按宽度求出等比例因子
             $new_width *= $r; // 扩展填充后的宽度
             $new_height *= $r; // 扩展填充后的高度
-            $_cut_height = ($this->height - $_n_w) / 4; // 求出裁剪点的高度
+            $_cut_height = ($this->height - $_n_h) / 4; // 求出裁剪点的高度
         }
         if ($new_height < $_n_h) { // 如果新高度小于新容器的高度
             $r = $_n_h / $new_height; // 按高度求出等比例因子
             $new_width *= $r; // 扩展填充后的宽度
             $new_height *= $r; // 扩展填充后的高度
-            $_cut_width = ($this->width - $_n_h) / 4; // 求出裁剪点的宽度
+            $_cut_width = ($this->width - $_n_w) / 4; // 求出裁剪点的宽度
         }
 
         // 新图背景资源句柄
-        $this->new = imagecreatetruecolor($new_width, $new_height);
+        $this->new = imagecreatetruecolor($_n_w, $_n_h);
 
         // 防止透明背景的图片缩略之后背景变成黑色
         $this->original_background();
@@ -193,6 +184,21 @@ class Image {
 
         // 这里很重要,意思是不要丢了新图背景图像的透明色;
         imagesavealpha($this->new, true);
+    }
+
+    // 设置图片水印
+    private function setWaterMark($_markPath, $_backWidth, $_backHeight) {
+        list($_water_width, $_water_height, $_water_type) = getimagesize($_markPath);
+        $_water = $this->getFromImg($_markPath, $_water_type);
+
+        $_padding = 5;
+        $_water_x = $_backWidth - $_water_width - $_padding;
+        $_water_y = $_backHeight - $_water_height - $_padding;
+
+        imagecopy($this->new, $_water, $_water_x, $_water_y, 0, 0, $_water_width, $_water_height);
+        imagepng($this->new, $this->file);
+        imagedestroy($this->img);
+        imagedestroy($_water);
     }
 
 }
