@@ -9,7 +9,8 @@ class ManageAction extends Action {
 
     // 构造方法，初始化
     public function __construct(&$_tpl) {
-        parent::__construct($_tpl, new ManageModel());
+        $_model = new ManageModel();
+        parent::__construct($_tpl, $_model);
 
         $this->_tpl->assign('show', false);
         $this->_tpl->assign('add', false);

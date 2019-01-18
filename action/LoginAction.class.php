@@ -9,13 +9,15 @@ class LoginAction extends Action {
 
     // 构造方法，初始化
     public function __construct(&$_tpl) {
-        parent::__construct($_tpl, new ManageModel());
+        $_model = new ManageModel();
+        parent::__construct($_tpl, $_model);
     }
 
     // 业务逻辑控制器
     public function _action(){
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
+            var_dump($action);
             switch(strtolower($action)){
                 case 'login':
                     $this->login();
