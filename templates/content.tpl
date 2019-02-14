@@ -24,42 +24,43 @@
 </ol>
 
 {if $add}
-    <form name="content" action="">
+    <form name="content" method="post" action="?action=add">
         <table cellspacing="0" class="content">
             <tr><th><strong>发布一条新文档</strong></th></tr>
-            <tr><td><label for="">文档标题：</label><input type="text" name="title" class="text"></td></tr>
+            <tr><td><label for="">文档标题：</label><input type="text" name="title" class="text"><span class="red">【必填】</span>（ 标题长度为 2～50 字符 ）</td></tr>
             <tr>
                 <td>
                     <label for="">栏目：</label>
-                    <select name="" id="">
+                    <select name="nav" id="">
                         <option value="">请选择一个栏目类别</option>
-                        <option value="">AAA</option>
+                        {$nav}
                     </select>
+                    <span class="red">【必选】</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="">定义属性：</label>
-                    <input type="checkbox" name="top" value="头条">头条
-                    <input type="checkbox" name="rec" value="推荐">推荐
-                    <input type="checkbox" name="bold" value="加粗">加粗
-                    <input type="checkbox" name="skip" value="跳转">跳转
+                    <input type="checkbox" name="attr[]" value="头条">头条
+                    <input type="checkbox" name="attr[]" value="推荐">推荐
+                    <input type="checkbox" name="attr[]" value="加粗">加粗
+                    <input type="checkbox" name="attr[]" value="跳转">跳转
                 </td>
             </tr>
-            <tr><td><label for="">标签：</label><input type="text" name="tag" class="text"></td></tr>
-            <tr><td><label for="">关键字：</label><input type="text" name="keyword" class="text"></td></tr>
+            <tr><td><label for="">标签：</label><input type="text" name="tag" class="text">（ 标签之间使用","分隔，总长度不能大于 30 位 ）</td></tr>
+            <tr><td><label for="">关键字：</label><input type="text" name="keyword" class="text">（ 关键字之间使用","分隔，总长度不能大于 30 位 ）</td></tr>
             <tr>
                 <td class="thumbnail">
-                    <label for="">缩略图：</label><input type="text" name="thumbnail" class="text" disabled="disabled"> <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html', 'upfile', 400, 100);">
-                    <img src="" alt="" name="pic" style="display: none;">
+                    <label for="">缩略图：</label><input type="text" name="thumbnail" class="text" readonly="readonly"> <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html', 'upfile', 400, 100);">
+                    <img src="" alt="" name="pic" style="display: none;">（ 必须是jpg,gif,png，并且 200k 以内 ）
                 </td>
             </tr>
-            <tr><td><label for="">文章来源：</label><input type="text" name="source" class="text"></td></tr>
-            <tr><td><label for="">作者：</label><input type="text" name="author" class="text"></td></tr>
-            <tr><td class="textarea"><label for="">内容摘要：</label><textarea name="info" id="" cols="30" rows="10"></textarea></td></tr>
+            <tr><td><label for="">文章来源：</label><input type="text" name="source" class="text">（ 文章来源不能大于 20 位 ）</td></tr>
+            <tr><td><label for="">作者：</label><input type="text" name="author" class="text" value="{$author}">（ 作者长度不能大于 10 位 ）</td></tr>
+            <tr><td class="textarea"><label for="">内容摘要：</label><textarea name="info" id="" cols="30" rows="10"></textarea>（ 内容摘要不能大于 200 位 ）</td></tr>
             <tr class="ckeditor">
                 <td class="textarea">
-                    <textarea name="ckeditor" class="ckeditor"></textarea>
+                    <textarea id="ckeditor_content" name="content" class="ckeditor"></textarea>
                 </td>
             </tr>
             <tr>
@@ -71,7 +72,7 @@
                 </td>
                 <td>
                     <label for="">浏览次数：</label>
-                    <input type="text" name="count" value="100" class="">
+                    <input type="text" name="count" value="100">
                 </td>
             </tr>
             <tr>
@@ -87,7 +88,7 @@
                 </td>
                 <td>
                     <label for="">消费金币：</label>
-                    <input type="text" name="count" value="0" class="">
+                    <input type="text" name="gold" value="0" class="">
                 </td>
             </tr>
             <tr>
@@ -105,13 +106,13 @@
                     <label for="">标题颜色：</label>
                     <select name="color" id="">
                         <option value="">默认颜色</option>
-                        <option value="">红色</option>
-                        <option value="">蓝色</option>
-                        <option value="">橙色</option>
+                        <option value="red">红色</option>
+                        <option value="blue">蓝色</option>
+                        <option value="orange">橙色</option>
                     </select>
                 </td>
             </tr>
-            <tr><td><input type="submit" value="发布文档"> <input type="reset" value="重置"></td></tr>
+            <tr><td><input type="submit" name="send" value="发布文档" onclick="return checkAddContent();"> <input type="reset" value="重置"></td></tr>
             <tr><td></td></tr>
         </table>
     </form>

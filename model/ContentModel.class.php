@@ -11,8 +11,20 @@
 class ContentModel extends Model
 {
     private $id;
-    private $level_name;
-    private $level_info;
+    private $title;
+    private $nav;
+    private $attr;
+    private $tag;
+    private $keyword;
+    private $thumbnail;
+    private $info;
+    private $source;
+    private $author;
+    private $content;
+    private $commend;
+    private $count;
+    private $gold;
+    private $color;
     private $limit;
 
     // 拦截器（__set）
@@ -25,5 +37,87 @@ class ContentModel extends Model
     public function __get($_key)
     {
         return $this->$_key;
+    }
+
+    // 新增
+    public function addContent() {
+        $_sql = "INSERT INTO
+                            cms_content (
+                                title,
+                                nav,
+                                attr,
+                                tag,
+                                keyword,
+                                thumbnail,
+                                info,
+                                source,
+                                author,
+                                content,
+                                commend,
+                                count,
+                                gold,
+                                color,
+                                date
+                            ) VALUES (
+                                '$this->title',
+                                '$this->nav',
+                                '$this->attr',
+                                '$this->tag',
+                                '$this->keyword',
+                                '$this->thumbnail',
+                                '$this->info',
+                                '$this->source',
+                                '$this->author',
+                                '$this->content',
+                                '$this->commend',
+                                '$this->count',
+                                '$this->gold',
+                                '$this->color',
+                                NOW()
+                            )";
+
+        return parent::aud($_sql);
+    }
+
+    // 获取文档列表
+    public function getListContent() {
+        $_sql = "
+            SELECT
+                  c.id,
+                  c.title,
+                  c.date,
+                  c.info,
+                  c.thumbnail,
+                  c.count,
+                  n.nav_name
+            FROM cms_content c, cms_nav n
+            WHERE c.nav = n.id AND c.nav IN ($this->nav)
+            $this->limit
+        ";
+
+        return parent::all($_sql);
+    }
+
+    // 获取主类下的子类的Id
+    public function getNavChildId() {
+        $_sql = "
+            SELECT
+                id
+            FROM cms_nav
+            WHERE pid = '$this->id'
+        ";
+
+        return parent::all($_sql);
+    }
+
+    // 获取文档总记录
+    public function getListContentTotal() {
+        $_sql = "
+            SELECT count(id)
+            FROM cms_content
+            WHERE nav IN ($this->nav)
+        ";
+
+        return parent::total($_sql);
     }
 }

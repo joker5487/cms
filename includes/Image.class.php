@@ -96,13 +96,13 @@ class Image {
             $r = $_n_w / $new_width; // 按宽度求出等比例因子
             $new_width *= $r; // 扩展填充后的宽度
             $new_height *= $r; // 扩展填充后的高度
-            $_cut_height = ($this->height - $_n_h) / 4; // 求出裁剪点的高度
+            $_cut_height = ($new_height - $_n_h) / 2; // 求出裁剪点的高度
         }
         if ($new_height < $_n_h) { // 如果新高度小于新容器的高度
             $r = $_n_h / $new_height; // 按高度求出等比例因子
             $new_width *= $r; // 扩展填充后的宽度
             $new_height *= $r; // 扩展填充后的高度
-            $_cut_width = ($this->width - $_n_w) / 4; // 求出裁剪点的宽度
+            $_cut_width = ($new_width - $_n_w) / 2; // 求出裁剪点的宽度
         }
 
         // 新图背景资源句柄

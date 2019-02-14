@@ -73,4 +73,31 @@ class Tool {
         }
         return $_data;
     }
+
+    // 字符串截取
+    static public function subStr($_object, $_filed, $_length, $_encoding) {
+        if ($_object) {
+            foreach ($_object as $_key => $_value) {
+                if (mb_strlen($_value->$_filed, $_encoding) > $_length) {
+                    $_value->$_filed = mb_substr($_value->$_filed, 0, $_length, $_encoding) . '...';
+                }
+
+                $_object[$_key] = $_value;
+            }
+        }
+
+        return $_object;
+    }
+
+    // 将对象数组转换成字符串
+    static public function objArrOfStr($_object, $_field) {
+        $_str = '';
+        if ($_object) {
+            foreach ($_object as $_value) {
+                $_str .= ',' . $_value->$_field;
+            }
+        }
+
+        return substr($_str, 1);
+    }
 }

@@ -70,6 +70,24 @@ class NavModel extends Model
         return parent::all($_sql);
     }
 
+    // 查询所有主导航, 不带limit
+    public function getAllFrontNav() {
+        // 设置查询逻辑
+        $_sql = "
+          SELECT
+                id,
+                nav_name,
+                nav_info,
+                pid,
+                sort
+            FROM cms_nav
+            WHERE pid = 0
+            ORDER BY sort ASC
+        ";
+
+        return parent::all($_sql);
+    }
+
     // 查询所有子导航
     public function getAllChildNav() {
         $_sql = "

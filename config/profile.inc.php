@@ -21,6 +21,7 @@ define('MARK', '/images/yc.png');                           // 水印图片地�
 define('MAX_FILE_SIZE', 204800);                            // 图片上传允许的最大值（KB）
 
 // 系统配置信息
-define('PAGE_SIZE', 10);                                    // 分页：每页显示记录数
+define('PAGE_SIZE', 10);                                    // 分页：每页显示记录数(后台列表)
+define('ARTICLE_SIZE', 8);                                  // 分页：每页显示记录数(前台文档列表)
 define('GPC', get_magic_quotes_gpc());                      // mysql 是否开启自动转义，1 开启， 0 未开启
 define('NAV_SIZE', 10);                                     // 前台主导航显示个数

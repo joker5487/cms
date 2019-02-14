@@ -15,6 +15,12 @@ class Validate {
         return false;
     }
 
+    // 判断是否为数字
+    static public function checkNum($_data) {
+        if ( ! is_numeric($_data)) return true;
+        return false;
+    }
+
     // 长度是否合法
     static public function checkLength($_data, $_length, $_flag) {
         if ($_flag == 'min') {
