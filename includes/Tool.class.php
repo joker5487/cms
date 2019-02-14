@@ -100,4 +100,9 @@ class Tool {
 
         return substr($_str, 1);
     }
+
+    // 将html字符串转换成html标签
+    static public function unHtml($_str) {
+        return htmlspecialchars_decode($_str);
+    }
 }

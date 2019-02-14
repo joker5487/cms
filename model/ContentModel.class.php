@@ -92,6 +92,7 @@ class ContentModel extends Model
                   n.nav_name
             FROM cms_content c, cms_nav n
             WHERE c.nav = n.id AND c.nav IN ($this->nav)
+            ORDER BY c.date DESC
             $this->limit
         ";
 
@@ -119,5 +120,26 @@ class ContentModel extends Model
         ";
 
         return parent::total($_sql);
+    }
+
+    // 获取单一文档的详细内容
+    public function getOneContent() {
+        $_sql = "
+            SELECT
+                id,
+                title,
+                nav,
+                content,
+                info,
+                date,
+                count,
+                author,
+                source
+            FROM cms_content
+            WHERE id = '$this->id'
+            LIMIT 1
+        ";
+
+        return parent::one($_sql);
     }
 }
